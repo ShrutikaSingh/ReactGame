@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./BoxComponent.css";
 import KeyBoardListner from "./KeyboardListener";
+import Button from "../components/Button/Button";
 
 //Functional Component to display Box and 
 const BoxComponent = () => {
@@ -56,14 +57,13 @@ const BoxComponent = () => {
   return (
     <>
       <KeyBoardListner  handleGo={handleGo}>
-        <div className="inputbutton">
-          <button
-            type="submit"
-            onClick={() => increaseObjects(boxState.objects.length + 1)}
+        <Button
+          type="button"
+          bsClass="btn btn-outline-primary"
+          onClick={() => increaseObjects(boxState.objects.length + 1)}
           >
-            Add More Boxes
-          </button>
-        </div>
+           ADD MORE BOXES
+          </Button>
         <div className="constBox">
           {boxState.objects.map((elements, index) => {
             const {top, left, zindex, display} = elements
