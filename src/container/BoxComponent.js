@@ -4,7 +4,7 @@ const BoxComponent = () => {
     const [boxState, setboxState] = useState({
         activeBox: {},
         objects: [
-          { id: 1, top: 1 , zindex: 10, display: "block"},
+          { id: 1},
         ],
       });
       const increaseObjects = (index) => {
