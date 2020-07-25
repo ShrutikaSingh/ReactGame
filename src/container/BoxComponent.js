@@ -36,7 +36,26 @@ const BoxComponent = () => {
     });
   };
 
-  
+  const handleKeyDown = (keyCode) => {
+      console.log("w_up",KeyCodes.ARROW_UP || KeyCodes.W_UP)
+    // eslint-disable-next-line default-case
+    switch (keyCode) {
+        case KeyCodes.ARROW_UP:
+            handleGoUp();
+            break;
+        case KeyCodes.W_UP:
+            handleGoUp();
+            break;
+        case KeyCodes.ARROW_DOWN:
+            handleGoDown();
+            break;
+        case KeyCodes.KeyCodes.S_DOWN:
+            handleGoDown();
+            break;
+        case KeyCodes.DELETE:
+            handleDelete()
+    }
+  };
   const handleGoUp = () => {
     console.log("Up key pressed", boxState.activeBox); //{id: 4, margins: "40px"}
     // setboxState(prevStyle => ({
