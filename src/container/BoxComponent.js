@@ -74,9 +74,7 @@ const BoxComponent = () => {
               style={{ display: display, top: `${top}px`, zIndex: zindex,left:`${left}px`, position: "relative"}}
               onClick={() => toggleActive(index)}
             >
-              {boxState.objects[index].top}
-              <br></br>
-              {index+1}rd Box
+              {index+1} Box
             </div>
             )
           })}
