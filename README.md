@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-Features Of this Game:-
+#### Features Of this Game:-
 
 User gets to see a button to add a new box in the window. On clicking the button, a box is created with a unique number ID. 
 
