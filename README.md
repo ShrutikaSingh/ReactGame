@@ -21,11 +21,17 @@ Features Of this Game:-
 User gets to see a button to add a new box in the window. On clicking the button, a box is created with a unique number ID. 
 
 ● Boxes are of fixed width and height.
+
 ● Higher id boxes have higher z-index.
+
 ● Users is able to add multiple boxes.
+
 ● To select a box, click on it and the box colour gets changed from purple to skyblue.
+
 ● Use W-A-S-D or arrow keys on the keyboard to move the box. Currently for moving the box you need to select it again and then press the W-A-S-D or Arrow-Keys to move it further(still working on it).
+
 ● Use the ‘delete’ key on the keyboard to remove the selected box.
+
 ● This project is built without any extra NPM libraries to handle keyBoard events.
 
 
