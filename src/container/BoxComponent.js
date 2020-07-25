@@ -25,6 +25,18 @@ const BoxComponent = () => {
             Add More Boxes
           </button>
         </div>
+        <div className="constBox">
+          {boxState.objects.map((elements, index) => (
+            <div
+              key={index}
+              style={{ top: `${ boxState.objects[index].top }px`, zIndex: boxState.objects[index].zindex,  position: "relative", display: boxState.objects[index].display }}
+            >
+              {boxState.objects[index].top}
+              <br></br>
+              Box number:{index+1}
+            </div>
+          ))}
+        </div>
         </>
     )
 }
