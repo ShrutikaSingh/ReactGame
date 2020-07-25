@@ -1,0 +1,24 @@
+.constBox{
+    display: flex;
+    height:100vh;  /* 100 vh -> view height, 100% height of screen that currently being renderes */
+    justify-content: center;  /* center them horizontally */
+    align-items: center; /* center them vertically */
+    flex-flow: row wrap;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.inactive{
+    background-color: #9b59be;
+}
+
+.active{
+    background-color: #3498db;
+    height: 200px;
+    width: 200px;
+}
