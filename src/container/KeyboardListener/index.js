@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 
 class KeyBoardListner extends Component{
   
-    static propTypes = {
-        onKeyDown: PropTypes.func.isRequired
-    }
+    //addevent listner of keydown for every re-render
     componentDidMount(){
         document.addEventListener('keydown', this.handleKeyDown);
     }
@@ -18,31 +16,31 @@ class KeyBoardListner extends Component{
         const {handleGo}=this.props  //getting the handleGo function from BoxComponent
         // eslint-disable-next-line default-case
         switch (keyCode) {
-            case KeyCodes.ARROW_UP:
+            case KeyCodes.ARROW_UP:     //for moving up the box by 30px
                 handleGo(30, 0);
                 break;
-            case KeyCodes.W_UP:
+            case KeyCodes.W_UP:         //for moving up the box by 30px
                 handleGo(30, 0);
                 break;
-            case KeyCodes.ARROW_DOWN:
+            case KeyCodes.ARROW_DOWN:   //for moving down the box by 30px
                 handleGo(-30, 0);
                 break;
-            case KeyCodes.S_DOWN:
+            case KeyCodes.S_DOWN:       //for moving down the box by 30px
                 handleGo(-30, 0);
                 break;
-            case KeyCodes.ARROW_LEFT:
+            case KeyCodes.ARROW_LEFT:   //for moving left the box by 30px
                 handleGo(0, 30);
                 break;
-            case KeyCodes.A_LEFT:
+            case KeyCodes.A_LEFT:       //for moving left the box by 30px
                 handleGo(0, 30);
                 break;
-            case KeyCodes.ARROW_RIGHT:
+            case KeyCodes.ARROW_RIGHT: //for moving right the box by 30px
                 handleGo(0, -30);
                 break;
-            case KeyCodes.D_RIGHT:
+            case KeyCodes.D_RIGHT:     //for moving right the box by 30px
                 handleGo(0, -30);
                 break;
-            case KeyCodes.DELETE:
+            case KeyCodes.DELETE:      //for deleting the component
                 handleGo(0,0,"none")
       }
     };
@@ -58,11 +56,18 @@ class KeyBoardListner extends Component{
         }
         return;
     }
+    
     render(){
         //console.log("eer",this.props.handleGo)
         return this.props.children
     }
+
+    static propTypes = {
+        onKeyDown: PropTypes.func.isRequired
+    }
 }
+
+
 
 export default  KeyBoardListner ;
 
