@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import "./BoxComponent.css";
 import { KeyCodes } from "./KeyboardListener/keyCodes";
+import KeyBoardListener from "./KeyboardListener"
 
+//Functional Component to display Box and 
 const BoxComponent = () => {
+
+ //initial boxState
   const [boxState, setboxState] = useState({
     activeBox: {},
     objects: [
       { id: 1, top: 1 , zindex: 10, display: "block"},
     ],
   });
+
+  //fuction to Select the box
   const toggleActive = (index) => {
     setboxState({ ...boxState, activeBox: boxState.objects[index] });
   };
+
+  //fuction to change styling of selected box
   const toggleActiveStyles = (index) => {
     if (boxState.objects[index] === boxState.activeBox) {
       return "box active";
@@ -28,26 +36,7 @@ const BoxComponent = () => {
     });
   };
 
-  const handleKeyDown = (keyCode) => {
-      console.log("w_up",KeyCodes.ARROW_UP || KeyCodes.W_UP)
-    // eslint-disable-next-line default-case
-    switch (keyCode) {
-        case KeyCodes.ARROW_UP:
-            handleGoUp();
-            break;
-        case KeyCodes.W_UP:
-            handleGoUp();
-            break;
-        case KeyCodes.ARROW_DOWN:
-            handleGoDown();
-            break;
-        case KeyCodes.KeyCodes.S_DOWN:
-            handleGoDown();
-            break;
-        case KeyCodes.DELETE:
-            handleDelete()
-    }
-  };
+  
   const handleGoUp = () => {
     console.log("Up key pressed", boxState.activeBox); //{id: 4, margins: "40px"}
     // setboxState(prevStyle => ({
@@ -98,6 +87,7 @@ const BoxComponent = () => {
 
   return (
     <>
+    <KeyBoardListener>
         <div className="inputbutton">
           <button
             type="submit"
@@ -120,6 +110,7 @@ const BoxComponent = () => {
             </div>
           ))}
         </div>
+        </KeyBoardListener>
     </>
   );
 };
