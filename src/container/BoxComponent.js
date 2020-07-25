@@ -1,25 +1,33 @@
 import React, { useState } from "react";
 import "./BoxComponent.css";
-import { KeyCodes } from "./KeyboardListener/keyCodes";
-import KeyBoardListener from "./KeyboardListener"
+import KeyBoardListner from "./KeyboardListener";
 
 //Functional Component to display Box and 
 const BoxComponent = () => {
 
- //initial boxState
+  //Initial boxState 
   const [boxState, setboxState] = useState({
     activeBox: {},
     objects: [
-      { id: 1, top: 1 , zindex: 10, display: "block"},
+      { id: 1, top: 1 , zindex: 10, display: "block", left:1 },
     ],
   });
 
-  //fuction to Select the box
+  //Increase the no. of box and their respective zindex
+  const increaseObjects = (index) => {
+   // console.log(boxState.objects.concat({ id: index }), "obj");
+    setboxState({
+      ...boxState,
+      objects: boxState.objects.concat({ id: index, top: 1, zindex: index+20, left:1 }),
+    });
+  };
+
+  //Select a box
   const toggleActive = (index) => {
     setboxState({ ...boxState, activeBox: boxState.objects[index] });
   };
 
-  //fuction to change styling of selected box
+  //Change styling of selected box
   const toggleActiveStyles = (index) => {
     if (boxState.objects[index] === boxState.activeBox) {
       return "box active";
@@ -28,85 +36,26 @@ const BoxComponent = () => {
     }
   };
 
-  const increaseObjects = (index) => {
-   // console.log(boxState.objects.concat({ id: index }), "obj");
-    setboxState({
-      ...boxState,
-      objects: boxState.objects.concat({ id: index, top: 1, zindex: index+20, display: "block" }),
-    });
-  };
-
-  const handleKeyDown = (keyCode) => {
-      console.log("w_up",KeyCodes.ARROW_UP || KeyCodes.W_UP)
-    // eslint-disable-next-line default-case
-    switch (keyCode) {
-        case KeyCodes.ARROW_UP:
-            handleGoUp();
-            break;
-        case KeyCodes.W_UP:
-            handleGoUp();
-            break;
-        case KeyCodes.ARROW_DOWN:
-            handleGoDown();
-            break;
-        case KeyCodes.KeyCodes.S_DOWN:
-            handleGoDown();
-            break;
-        case KeyCodes.DELETE:
-            handleDelete()
-    }
-  };
-  const handleGoUp = () => {
-    console.log("Up key pressed", boxState.activeBox); //{id: 4, margins: "40px"}
-    // setboxState(prevStyle => ({
-    //     ...prevStyle,
-    //     activeBox: { ...prevStyle.activeBox, margins: "200px"}
-    // }));
-    // setboxState
-    const boxIndex = boxState.objects.findIndex(
-      (i) => i.id === boxState.activeBox.id
+  //Move the box a/c to keys by changing different css styling 
+  const handleGo = (topDifference, sideDifference, displayDelete) => {
+    const {objects, activeBox} = boxState
+    const boxIndex = objects.findIndex(
+      (i) => i.id === activeBox.id
     );
-    console.log("handleGoDown -> boxIndex", boxState.activeBox);
-
+    console.log("handleGoDown -> boxIndex", activeBox);
     let newBoxData = boxState;
     newBoxData.objects[boxIndex] = {
-      ...boxState.activeBox,
-      top: boxState.activeBox.top-30,
+      ...activeBox,
+      top: activeBox.top-topDifference,
+      left: activeBox.left-sideDifference,
+      display: displayDelete
     };
     setboxState({ ...newBoxData });
   };
-
-  const handleGoDown = () => {
-    //console.log("down key pressed", boxState.activeBox); //{id: 4, top: "40px"}
-    const boxIndex = boxState.objects.findIndex(
-      (i) => i.id === boxState.activeBox.id
-    );
-    let newBoxData = boxState;
-    newBoxData.objects[boxIndex] = {
-      ...boxState.activeBox,
-      top: boxState.activeBox.top+30,
-    };
-    setboxState({ ...newBoxData });
-  };
-
-  const handleDelete = () => {
-    //console.log("delete key pressed", boxState.activeBox); //{id: 4, top: "40px"}
-    const boxIndex = boxState.objects.findIndex(
-      (i) => i.id === boxState.activeBox.id
-    );
-    let newBoxData = boxState;
-    newBoxData.objects[boxIndex] = {
-      ...boxState.activeBox,
-      display: "none",
-    };
-    setboxState({ ...newBoxData });
-
-  };
-
 
   return (
     <>
-    <KeyBoardListener>
+      <KeyBoardListner  handleGo={handleGo}>
         <div className="inputbutton">
           <button
             type="submit"
@@ -116,20 +65,23 @@ const BoxComponent = () => {
           </button>
         </div>
         <div className="constBox">
-          {boxState.objects.map((elements, index) => (
+          {boxState.objects.map((elements, index) => {
+            const {top, left, zindex, display} = elements
+            return(
             <div
               key={index}
               className={toggleActiveStyles(index)}
-              style={{ top: `${ boxState.objects[index].top }px`, zIndex: boxState.objects[index].zindex,  position: "relative", display: boxState.objects[index].display }}
+              style={{ display: display, top: `${top}px`, zIndex: zindex,left:`${left}px`, position: "relative"}}
               onClick={() => toggleActive(index)}
             >
               {boxState.objects[index].top}
               <br></br>
-              Box number:{index+1}
+              {index+1}Box number:
             </div>
-          ))}
+            )
+          })}
         </div>
-        </KeyBoardListener>
+      </KeyBoardListner>
     </>
   );
 };
