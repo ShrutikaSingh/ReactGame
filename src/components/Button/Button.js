@@ -9,7 +9,6 @@ export default class Button extends PureComponent {
       children,
     } = this.props;
     return (
-      // eslint-disable-next-line react/button-has-type
       <button
         type={type}
         className={bsClass}
