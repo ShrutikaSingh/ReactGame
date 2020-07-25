@@ -76,7 +76,7 @@ const BoxComponent = () => {
             >
               {boxState.objects[index].top}
               <br></br>
-              {index+1}Box number:
+              {index+1}rd Box
             </div>
             )
           })}
