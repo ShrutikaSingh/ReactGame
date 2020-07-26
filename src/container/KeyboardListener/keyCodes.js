@@ -1,3 +1,4 @@
+//KeyCode for different keyboard keys from event.KeyCode
 export const KeyCodes = {
     ARROW_UP:38,
     W_UP:87,

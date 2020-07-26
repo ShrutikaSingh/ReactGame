@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./BoxComponent.css";
+import "./index.css";
 import KeyBoardListner from "./KeyboardListener";
 import Button from "../components/Button/Button";
 
-//Functional Component to display Box and 
+//Functional Component to Display Box 
 const BoxComponent = () => {
 
-  //Initial boxState 
+  //Initial boxState  and setBoxState to update it
   const [boxState, setboxState] = useState({
     activeBox: {},
     objects: [
@@ -16,7 +16,6 @@ const BoxComponent = () => {
 
   //Increase the no. of box and their respective zindex
   const increaseObjects = (index) => {
-   // console.log(boxState.objects.concat({ id: index }), "obj");
     setboxState({
       ...boxState,
       objects: boxState.objects.concat({ id: index, top: 1, zindex: index+20, left:1 }),
@@ -53,32 +52,31 @@ const BoxComponent = () => {
 };
 
   return (
-    <>
-      <KeyBoardListner  handleGo={handleGo}>
-        <Button
+      <>
+        <KeyBoardListner  handleGo={handleGo}>
+          <Button
           type="button"
           bsClass="btn btn-outline-primary"
           onClick={() => increaseObjects(boxState.objects.length + 1)}
           >
-           ADD MORE BOXES
+            ADD MORE BOXES
           </Button>
-        <div className="constBox">
-          {boxState.objects.map((elements, index) => {
-            const {top, left, zindex, display} = elements
-            return(
-            <div
-              key={index}
-              className={toggleActiveStyles(index)}
-              style={{ display: display, top: `${top}px`, zIndex: zindex,left:`${left}px`, position: "relative"}}
-              onClick={() => toggleActive(index)}
-            >
-              {index+1} Box
-            </div>
-            )
-          })}
-        </div>
-      </KeyBoardListner>
-    </>
+          <div className="constBox">
+            {boxState.objects.map((elements, index) => {
+              const {top, left, zindex, display} = elements
+              return(
+              <div
+                key={index}
+                className={toggleActiveStyles(index)}
+                style={{ display: display, top: `${top}px`, zIndex: zindex,left:`${left}px`, position: "relative"}}
+                onClick={() => toggleActive(index)}
+              >
+                {index+1} Box
+              </div>)}
+            )}
+          </div>
+        </KeyBoardListner>
+      </>
   );
 };
 

@@ -49,7 +49,6 @@ class KeyBoardListner extends Component{
     handleKeyDown = event => {
         event.preventDefault();
         const {keyCode} = event;
-        //console.log(event,"at event")
         const allowedKeyCodes = Object.values(KeyCodes)
         if(allowedKeyCodes.includes(keyCode)){
             this.onKeyDown(keyCode)
@@ -58,7 +57,6 @@ class KeyBoardListner extends Component{
     }
     
     render(){
-        //console.log("eer",this.props.handleGo)
         return this.props.children
     }
 }

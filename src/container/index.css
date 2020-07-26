@@ -1,6 +1,6 @@
 .constBox{
     display: flex;
-    height:50vh;  /* 100 vh -> view height, 100% height of screen that currently being renderes */
+    height:50vh;  /* 50 vh -> view height, 50% height of screen that currently being renderes */
     justify-content: center;  /* center them horizontally */
     align-items: center; /* center them vertically */
     flex-flow: row wrap;
@@ -12,6 +12,7 @@
     height: 200px;
     margin: 10px;
 }
+
 .btn{
     padding: 10px 19px;
     cursor: pointer;

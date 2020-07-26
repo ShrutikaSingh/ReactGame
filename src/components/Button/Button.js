@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 
+//Create a stateless Button Component
 export default class Button extends PureComponent {
   render() {
     const {
