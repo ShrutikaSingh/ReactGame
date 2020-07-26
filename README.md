@@ -1,4 +1,4 @@
-##### React Game to generate new boxes in the UI by clicking the button. Select and move those boxes using your keyboard keys.
+### React Game to generate new boxes in the UI by clicking the button. Select and move those boxes using your keyboard keys.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
