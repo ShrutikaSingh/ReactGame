@@ -30,29 +30,27 @@ const BoxComponent = () => {
 
   //Change styling of selected box
   const toggleActiveStyles = (index) => {
-    if (boxState.objects[index] === boxState.activeBox) {
+    if (boxState.objects[index].id === boxState.activeBox.id) {
       return "box active";
     } else {
       return "box inactive";
     }
   };
 
-  //Move the box a/c to keys by changing different css styling 
-  const handleGo = (topDifference, sideDifference, displayDelete) => {
-    const {objects, activeBox} = boxState
-    const boxIndex = objects.findIndex(
-      (i) => i.id === activeBox.id
-    );
-    console.log("handleGoDown -> boxIndex", activeBox);
-    let newBoxData = boxState;
-    newBoxData.objects[boxIndex] = {
-      ...activeBox,
-      top: activeBox.top-topDifference,
-      left: activeBox.left-sideDifference,
-      display: displayDelete
-    };
-    setboxState({ ...newBoxData });
+ //Move the box a/c to keys by changing different css styling 
+ const handleGo = (topDifference, sideDifference, displayDelete) => {
+  const {objects, activeBox} = boxState
+  const boxIndex = objects.findIndex((i) => i.id === activeBox.id);
+  console.log("handleGoDown -> boxIndex", activeBox);
+  let newBoxData = boxState;
+  newBoxData.objects[boxIndex] = {
+    ...newBoxData.objects[boxIndex],
+    top: newBoxData.objects[boxIndex].top-topDifference,
+    left: newBoxData.objects[boxIndex].left-sideDifference,
+    display: displayDelete
   };
+  setboxState({ ...newBoxData });
+};
 
   return (
     <>
