@@ -32,6 +32,8 @@ User gets to see a button to add a new box in the window. On clicking the button
 
 ● Use the ‘delete’ key on the keyboard to remove the selected box.
 
+● Haven't used any NPM library to achieve this behaviour.
+
 ● This project is built without any extra NPM libraries to handle keyBoard events.
 
 
